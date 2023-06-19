@@ -1,0 +1,115 @@
+<footer class="footer">
+    <div class="div__footer">
+        <div class="footer__social">
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-facebook-messenger"></i>
+            <i class="fa-brands fa-square-instagram"></i>
+        </div>
+
+        <div class="footer__human">
+            <div class="han" style="text-align: center;">
+                <img src="assets/img/han.jpg" alt="" class="footer__human__img">
+                <div>Lý Hân</div>
+            </div>
+
+            <div class="dat" style="text-align: center;">
+                <img src="assets/img/dat.png" alt="" class="footer__human__img">
+                <div>Đạt Trần</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="chat-bar-collapsible">
+    <button id="chat-button" type="button" class="chat_collapsible">
+        <i id="chat-icon" style="color: #ffffff;" class="fa-brands fa-facebook-messenger"></i>
+    </button>
+
+    <div class="chat_content">
+        <div class="full-chat-block">
+            <!-- Message Container -->
+            <div class="chat_outer-container">
+                <div class="chat-container">
+                    <!-- Messages -->
+                    <div id="chatbox">
+                        <h5 id="chat-timestamp"></h5>
+                        <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                    </div>
+
+                    <!-- User input box -->
+                    <div class="chat-bar-input-block">
+                        <div id="userInput">
+                            <input id="textInput" class="input-box" type="text" name="msg"
+                                placeholder="Nhấn 'Enter' để gủi tin nhắn">
+                            <p></p>
+                        </div>
+
+                        <div class="chat-bar-icons">
+                            <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
+                                onclick="heartButton()"></i>
+                            <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
+                                onclick="sendButton()"></i>
+                        </div>
+                    </div>
+
+                    <div id="chat-bar-bottom">
+                        <p></p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+function mouseDown() {
+  document.getElementById("find-input").style.display = "inline-block";
+}
+
+function mouseUp() {
+  document.getElementById("find-input").style.display = "inline-block";
+}
+
+function find_function() {
+    var element = document.getElementById("find-input");
+    element.classList.toggle("appear");
+
+    var element1 = document.getElementById("nav__item1");
+    element1.classList.toggle("hiden");
+    var element2 = document.getElementById("nav__item2");
+    element2.classList.toggle("hiden");
+    var element3 = document.getElementById("nav__item3");
+    element3.classList.toggle("hiden");
+    var element4 = document.getElementById("nav__item4");
+    element4.classList.toggle("hiden");
+    var element5 = document.getElementById("nav__item5");
+    element5.classList.toggle("hiden");
+}
+
+function find_menu_cho_function(){
+    var element = document.getElementById("menu__cho-list");
+    element.classList.toggle("appear");
+}
+
+function find_menu_meo_function(){
+    var element = document.getElementById("menu__meo-list");
+    element.classList.toggle("appear");
+}
+
+function appear_menu(){
+    var element = document.getElementById("menu__list");
+    element.classList.toggle("appear");
+}
+</script>
+<script src="./assets/js/swiper-bundle.min.js"></script>
+<script src="./assets/js/script.js"></script>
+<script src="./assets/js/chat.js"></script>
+<script src="./assets/js/responses.js"></script>
+</body>
+</html>
