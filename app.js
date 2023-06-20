@@ -215,6 +215,20 @@ app.get("/cho/:sanPham", function(req, res) {
     });
 });
 
+app.get("/meo/:sanPham", function(req, res) {
+    const requestedSanPham = req.params.sanPham;
+    Product.findOne({index: requestedSanPham}).then(function(foundProduct) {
+        res.render("sanPham", {
+            pricture: foundProduct.pricture,
+            title: foundProduct.title,
+            content: foundProduct.content,
+            price: foundProduct.price
+        });
+    }).catch(function(err) {
+        console.log(err);
+    });
+});
+
 app.get("/dangXuat", function(req, res) {
     req.logout(function(err) {
         if (err) { 
