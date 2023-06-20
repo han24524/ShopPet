@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/dangky.css">
+</head>
+<body>
+    <div class="box">
+        <form action="/dangKy" method="POST">
+            <h2>Đăng Ký</h2>
+            <div class="inputBox">
+                <input type="text" required="required" name="username">
+                <span>Tên Đăng Nhập</span>
+                <i></i>
+            </div>
+            <% if (err === "tonTai") { %>
+                <p style="color: red;">Tên đăng nhập đã tồn tại</p>
+            <% } %>
+            <div class="inputBox">
+                <input type="text" required="required" name="email">
+                <span>Email</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" required="required" name="password">
+                <span>Mật Khẩu</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" required="required" name="checkPassword">
+                <span>Nhập Lại Mật Khẩu</span>
+                <i></i>
+            </div>
+            <% if (err === "matKhau") { %>
+                <p style="color: red;">Mật khẩu nhập lại không đúng</p>
+            <% } %>
+            <div class="links">
+                <a href=""></a>
+                <a href="/dangNhap">Đăng Nhập</a>
+            </div>
+            <!-- <p style="color: red;"></p> -->
+            <input type="submit" value="Đăng Ký">
+        </form>
+    </div>
+</body>
+</html>

@@ -39,55 +39,115 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+const productsSchema = new mongoose.Schema({
+    index: String,
+    pricture: String,
+    title: String,
+    content: String,
+    price: Number
+});
+
+const Product = new mongoose.model("Product", productsSchema);
+
+var tenTK = "";
+
 app.get("/", function(req, res) {
-    res.render("index");
+    if (req.isAuthenticated()) {
+        res.render("index", {taiKhoan: "co", tenTK: tenTK});
+    } else {
+        res.render("index", {taiKhoan: "khong"});
+    }
 });
 
-app.get("/thongbao", function(req, res) {
-    res.render("thongbao");
+app.get("/thongBao", function(req, res) {
+    if (req.isAuthenticated()) {
+        res.render("thongbao", {taiKhoan: "co", tenTK: tenTK});
+    } else {
+        res.render("thongbao", {taiKhoan: "khong"});
+    }
 });
 
-app.get("/giohang", function(req, res) {
-    res.render("giohang");
+app.get("/gioHang", function(req, res) {
+    if (req.isAuthenticated()) {
+        res.render("giohang", {taiKhoan: "co", tenTK: tenTK});
+    } else {
+        res.render("giohang", {taiKhoan: "khong"});
+    }
 });
 
 app.get("/shopCho", function(req, res) {
-    res.render("shopCho");
+    if (req.isAuthenticated()) {
+        res.render("shopCho", {taiKhoan: "co", tenTK: tenTK});
+    } else {
+        res.render("shopCho", {taiKhoan: "khong"});
+    }
 });
 
 app.get("/cho", function(req, res) {
-    res.render("cho");
+    if (req.isAuthenticated()) {
+        res.render("cho", {taiKhoan: "co", tenTK: tenTK});
+    } else {
+        res.render("cho", {taiKhoan: "khong"});
+    }
 });
 
 app.get("/doAnCho", function(req, res) {
-    res.render("doAnCho");
+    if (req.isAuthenticated()) {
+        res.render("doAnCho", {taiKhoan: "co", tenTK: tenTK});
+    } else {
+        res.render("doAnCho", {taiKhoan: "khong"});
+    }
 });
 
 app.get("/phuKienCho", function(req, res) {
-    res.render("phuKienCho");
+    if (req.isAuthenticated()) {
+        res.render("phuKienCho", {taiKhoan: "co", tenTK: tenTK});
+    } else {
+        res.render("phuKienCho", {taiKhoan: "khong"});
+    }
 });
 
 app.get("/shopMeo", function(req, res) {
-    res.render("shopMeo");
+    if (req.isAuthenticated()) {
+        res.render("shopMeo", {taiKhoan: "co", tenTK: tenTK});
+    } else {
+        res.render("shopMeo", {taiKhoan: "khong"});
+    }
 });
 
 app.get("/meo", function(req, res) {
-    res.render("meo");
+    if (req.isAuthenticated()) {
+        res.render("meo", {taiKhoan: "co", tenTK: tenTK});
+    } else {
+        res.render("meo", {taiKhoan: "khong"});
+    }
 });
 
 app.get("/doAnMeo", function(req, res) {
-    res.render("doAnMeo");
+    if (req.isAuthenticated()) {
+        res.render("doAnMeo", {taiKhoan: "co", tenTK: tenTK});
+    } else {
+        res.render("doAnMeo", {taiKhoan: "khong"});
+    }
 });
 
 app.get("/phuKienMeo", function(req, res) {
-    res.render("phuKienMeo");
+    if (req.isAuthenticated()) {
+        res.render("phuKienMeo", {taiKhoan: "co", tenTK: tenTK});
+    } else {
+        res.render("phuKienMeo", {taiKhoan: "khong"});
+    }
 });
 
-app.get("/login", function(req, res) {
-    res.render("login");
+app.get("/dangNhap", function(req, res) {
+    var mes = req.session.messages;
+    if (typeof(mes) === "object") {
+        mes = mes[0];
+    };
+    res.render("dangnhap", {err: mes});
 });
 
-app.post("/login", function(req, res) {
+app.post("/dangNhap", function(req, res) {
     const user = new User({
         username: req.body.username,
         password: req.body.password
@@ -96,27 +156,73 @@ app.post("/login", function(req, res) {
     req.login(user, function(err) {
         if (err) {
             console.log(err);
-            res.redirect("/login");
+            res.redirect("/dangNhap", {err: req.session.messages});
         } else {
-            passport.authenticate("local")(req, res, function() {
+            passport.authenticate("local", {failureRedirect: "/dangNhap", failureMessage: true})(req, res, function() {
+                tenTK = req.body.username;
                 res.redirect("/");
             });
         }
     });
 });
 
-app.get("/register", function(req, res) {
-    res.render("register");
+var mes = "khong";
+app.get("/dangKy", function(req, res) {
+    res.render("dangky", {err: mes});
+    mes = "khong";
 });
 
-app.post("/register", function(req, res) {
-    User.register({username: req.body.username, email: req.body.email}, req.body.password).then(function(user) {
-        passport.authenticate("local")(req, res, function() {
-            res.redirect("/");
+app.post("/dangKy", function(req, res) {
+    var username = req.body.username;
+    var email = req.body.email;
+    var password = req.body.password;
+    var checkPasswork = req.body.checkPassword;
+
+    if (password != checkPasswork) {
+        mes = "matKhau";
+        res.redirect("/dangKy");
+    } else {
+        User.findOne({username: username}).then(function(foundUser) {
+            if (!foundUser) {
+                User.register({username: username, email: email}, password).then(function(user) {
+                    passport.authenticate("local")(req, res, function() {
+                        tenTK = username;
+                        res.redirect("/");
+                    });
+                }).catch(function(err) {
+                    console.log(err);
+                    res.redirect("/dangKy");
+                });
+            } else {
+                mes = "tonTai";
+                res.redirect("/dangKy");
+            }
+        });
+    }
+});
+
+app.get("/cho/:sanPham", function(req, res) {
+    const requestedSanPham = req.params.sanPham;
+    Product.findOne({index: requestedSanPham}).then(function(foundProduct) {
+        res.render("sanPham", {
+            pricture: foundProduct.pricture,
+            title: foundProduct.title,
+            content: foundProduct.content,
+            price: foundProduct.price
         });
     }).catch(function(err) {
         console.log(err);
-        res.redirect("/register");
+    });
+});
+
+app.get("/dangXuat", function(req, res) {
+    req.logout(function(err) {
+        if (err) { 
+            console.log(err); 
+        } else {
+            tenTK = '';
+            res.redirect("/");
+        }
     });
 });
 

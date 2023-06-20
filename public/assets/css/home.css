@@ -1,10 +1,13 @@
+body {
+    overflow-x: hidden;
+}
+
 .body{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* max-width: 1200px; */
-    width: 100%;
+    width: 100vW;
 }
 
 .body__title{
@@ -13,7 +16,7 @@
 }
 
 .body__title__img{
-
+    
 }
 
 .body__title__text{
@@ -25,36 +28,22 @@
     font-weight: 700;
 }
 
-@media screen and (max-width: 959px){
-    .body__title__img{
-        width: 100vW;
-        object-fit: contain;
-    }   
-    .body__title__text{
-        font-size: 5rem;
-        font-weight: 700;
-    }
-}
-
-@media screen and (max-width: 650px){   
-    .body__title__text{
-        font-size: 4rem;
-        font-weight: 700;
-    }
-}
-
 .body__cho{
     display: flex;
     max-width: 1200px;
+    width: 100%;
     margin-top: 30px;
 }
 
 .codinh{
     background-color: #edebeb;
+    top: 0;
 }
 
 .body__cho__left{
     width: 200px;
+    max-width: 200px;
+    min-width: 100px;
     position: -webkit-sticky;
     position: sticky;
     top: 70px;
@@ -62,7 +51,7 @@
 
 .body__cho__left__title{
     padding: 20px;
-    background-image: url(/shop_thu/assets/img/1.jpg);
+    background-image: url(/assets/img/1.jpg);
     width: 200px;
     text-align: center;
     font-size: 2.6rem;
@@ -82,9 +71,8 @@
 }
 
 .body__cho__right{
-    width: auto;
     box-shadow: 0px 2px 5px #b5b5b5;
-
+    width: auto;
 }
 
 .title{
@@ -122,10 +110,11 @@
 .cho{
     padding-top: 25px;
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
+    justify-content: space-around;
     max-width: 1000px;
     width: 100%;
-    height: 400px;
+    height: auto;
     /* box-shadow: 0px 2px 5px #b5b5b5; */
 }
 
@@ -189,3 +178,40 @@
     box-shadow: 2px 3px 5px #6b6b6b;
 }
 
+@media screen and (max-width: 1200px){
+    .body__cho{
+        left: 0;
+        align-self: start;
+    }
+    .body__title__img{
+        width: 100vW;
+        object-fit: contain;
+    }
+    .body__cho__right{
+        width:calc(100vW - 200px);
+    }
+}
+
+@media screen and (max-width: 805px){
+       
+    .body__title__text{
+        font-size: 5rem;
+        font-weight: 700;
+    }
+    /* .body__cho__right{
+        width:50%;
+    } */
+}
+
+@media screen and (max-width: 600px){   
+    .body__title__text{
+        font-size: 4rem;
+        font-weight: 700;
+    }
+    .codinh{
+        display: none;
+    }
+    .body__cho__right{
+        width: 100vw;
+    }
+}
