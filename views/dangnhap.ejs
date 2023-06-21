@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HD Shop</title>
+    <link rel="icon" type="image/x-icon" href="./assets/img/m.jpg">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -28,7 +30,7 @@
                 <a href="/dangKy">Đăng Ký</a>
             </div>
             <% if (err === "Password or username is incorrect") { %>
-                <p style="color: red;">Tên đăng nhập hoặc mật khẩu không đúng</p>
+                <p class="loi">Tên đăng nhập hoặc mật khẩu không đúng</p>
             <% } %>
             <input type="submit" value="Đăng Nhập">
         </form>
