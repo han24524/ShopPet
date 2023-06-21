@@ -1,14 +1,224 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <img src="<%= pricture %>" alt="">
-    <h1><%= title %></h1>
-    <p><%= price %></p>
-    <p><%= content %></p>
+<%- include('partials/header2') %>
+
+        <div class="body">
+            <div class="body__sanpham">
+                <div class="left">
+                    <img src="<%= pricture %>" alt="">
+                    <div class="mota">
+                        <label for="">Chia sẻ:</label>
+                        <div class="mxh">
+                            <i class="fa-brands fa-facebook-messenger"></i>
+                            <i class="fa-brands fa-facebook"></i>
+                            <i class="fa-brands fa-square-twitter"></i>
+                            <i class="fa-brands fa-pinterest"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div class="tensanpham"><%= title %></div>
+                    <div class="daban">Đã bán: 78</div>
+                    <div class="giaban"><%= price %> VND</div>
+                    <div class="soluong">
+                        <label >Số lượng: </label>
+                        <div class="chonsoluong">
+                            <button onclick="tru()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                              </svg>
+                              </button>
+
+                            <input type="text" name="" id="soluonghienthi" value="1">
+
+                            <button onclick="cong()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                              </svg>
+                              </button>
+                        </div>
+                    </div>
+                    <div class="nut">
+                        <button>Thêm Vào Giỏ</button>
+                        <button>Mua Ngay</button>
+                    </div>
+                    <div class="thongtin">
+                        <div class="thongtinsp thongtinsanpham" onclick="xhthongtinsanpham()">Thông tin sản phẩm <i class="fa-solid fa-caret-down down3"></i></div>
+                        <div class="text text1" id="text1"><%= content %></div>
+                        <div class="thongtinsp chinhsach" onclick="xhchinhsach()">Chính sách hoàn trả <i class="fa-solid fa-caret-down down3"></i></div>
+                        <div class="text text2" id="text2">Trước khi nhận hàng quý khách vui lòng kiểm tra lại đầy đủ và có minh chứng, đề phòng trường hợp có sai phạm</div>
+                        <div class="thongtinsp ship" onclick="xhgiaohang()">Thông tin giao hàng <i class="fa-solid fa-caret-down down3"></i></div>
+                        <div class="text text3" id="text3">Sau khi Quý Khách hàng đặt mua hàng tại PetCity.vn, dựa vào các thông tin quý khách cung cấp, nhân viên của chúng tôi sẽ đến tận nơi giao hàng và Quý Khách thanh toán tiền ngay cho nhân viên giao hàng.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="div__footer">
+                <div class="footer__social">
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-facebook-messenger"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-square-twitter"></i>
+                    <i class="fa-brands fa-pinterest"></i>
+                </div>
+    
+                <div class="footer__human">
+                    <div class="han" style="text-align: center;">
+                        <img src="../assets/img/han.jpg" alt="" class="footer__human__img">
+                        <div>Lý Hân</div>
+                    </div>
+
+                    <div class="dat" style="text-align: center;">
+                        <img src="../assets/img/dat.png" alt="" class="footer__human__img">
+                        <div>Đạt Trần</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <div class="chat-bar-collapsible">
+            <button id="chat-button" type="button" class="chat_collapsible">
+                <i id="chat-icon" style="color: #ffffff;" class="fa-brands fa-facebook-messenger"></i>
+            </button>
+        
+            <div class="chat_content">
+                <div class="full-chat-block">
+                    <!-- Message Container -->
+                    <div class="chat_outer-container">
+                        <div class="chat-container">
+                            <!-- Messages -->
+                            <div id="chatbox">
+                                <h5 id="chat-timestamp"></h5>
+                                <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                            </div>
+        
+                            <!-- User input box -->
+                            <div class="chat-bar-input-block">
+                                <div id="userInput">
+                                    <input id="textInput" class="input-box" type="text" name="msg"
+                                        placeholder="Nhấn 'Enter' để gủi tin nhắn">
+                                    <p></p>
+                                </div>
+        
+                                <div class="chat-bar-icons">
+                                    <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
+                                        onclick="heartButton()"></i>
+                                    <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
+                                        onclick="sendButton()"></i>
+                                </div>
+                            </div>
+        
+                            <div id="chat-bar-bottom">
+                                <p></p>
+                            </div>
+        
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        let a = document.getElementById('soluonghienthi');
+        let amount = a.value;
+        console.log(amount)
+
+        let render = (amount) =>{
+            a.value = amount
+        }
+
+        let tru = () =>{
+            if(amount>1)
+            amount--;
+            render(amount);
+        }
+
+        let cong = () =>{
+            amount++
+            render(amount);
+        }
+
+        a.addEventListener('input', () =>{
+            amount = a.value;
+            amount = parseInt(amount);
+            amount = (isNaN(amount)||amount==0)?1:amount;
+            render(amount);
+            console.log(amount);
+        });
+    </script>
+
+    <script>
+        function mouseDown() {
+          document.getElementById("find-input").style.display = "inline-block";
+        }
+        
+        function mouseUp() {
+          document.getElementById("find-input").style.display = "inline-block";
+        }
+
+        function find_function() {
+            var element = document.getElementById("find-input");
+            element.classList.toggle("appear");
+
+            var element1 = document.getElementById("nav__item1");
+            element1.classList.toggle("hiden");
+            var element2 = document.getElementById("nav__item2");
+            element2.classList.toggle("hiden");
+            var element3 = document.getElementById("nav__item3");
+            element3.classList.toggle("hiden");
+            var element4 = document.getElementById("nav__item4");
+            element4.classList.toggle("hiden");
+            var element5 = document.getElementById("nav__item5");
+            element5.classList.toggle("hiden");
+        }
+
+        function find_menu_cho_function(){
+            var element = document.getElementById("menu__cho-list");
+            element.classList.toggle("appear");
+        }
+
+        function find_menu_meo_function(){
+            var element = document.getElementById("menu__meo-list");
+            element.classList.toggle("appear");
+        }
+
+        function appear_menu(){
+            var element = document.getElementById("menu__list");
+            element.classList.toggle("appear");
+        }
+
+        function appear_mes(){
+            var element = document.getElementById("mes");
+            element.classList.toggle("appear");
+        }
+
+        function appear_user(){
+            var element = document.getElementById("user");
+            element.classList.toggle("appear");
+        }
+
+        function xhthongtinsanpham(){
+            var element = document.getElementById("text1");
+            element.classList.toggle("hidden");
+        }
+
+        function xhchinhsach(){
+            var element = document.getElementById("text2");
+            element.classList.toggle("appear");
+        }
+
+        function xhgiaohang(){
+            var element = document.getElementById("text3");
+            element.classList.toggle("appear");
+        }
+    </script>
+    <script src="../assets/js/swiper-bundle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/chat.js"></script>
+    <script src="../assets/js/responses.js"></script>
 </body>
 </html>

@@ -1,0 +1,161 @@
+.body{
+    /* max-width: 1200px; */
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.body__sanpham{
+    max-width: 1200px;
+    width: 100vW;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left{
+    width: 40%;
+}
+
+.left img{
+    width: 100%;
+    height: 460px;
+    object-fit: contain;
+}
+
+.mota{
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+}
+
+.mxh{
+    margin-left: 5px;
+    font-size: 2.8rem;
+}
+
+.fa-facebook-messenger{
+    color: #0384ff;
+}
+
+.fa-facebook{
+    color: #3b5999;
+}
+
+.fa-square-twitter{
+    color: #10c2ff;
+}
+
+.fa-pinterest{
+    color: #de0217;
+}
+
+.fa-youtube{
+    color: #ff0000;
+}
+
+.right{
+    width: 60%;
+}
+
+.tensanpham{
+    font-size: 2.6rem;
+    font-weight: 500;
+    color: #3b5999;
+}
+
+.daban{
+    font-size: 1.4rem;
+    color: #909090;
+    margin-top: 10px;
+}
+
+.giaban{
+    font-size: 1.8rem;
+    margin-top: 30px;
+}
+
+.soluong{
+    font-size: 1.6rem;
+    color: #444444;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.chonsoluong{
+    display: flex;
+    margin-left: 20px;
+}
+
+.chonsoluong button{
+    width: 35px;
+    height: 35px;
+    outline: none;
+    background: none;
+    border: 1px solid #d7d7d7;
+    cursor: pointer;
+}
+
+.chonsoluong button:hover{
+    background-color: #d7d7d7;
+}
+
+.chonsoluong button svg{
+    color: #909090;
+}
+
+.chonsoluong button:hover svg{
+    color: #4f4f4f;
+}
+
+.chonsoluong input{
+    text-align: center;
+    width: 60px;
+    outline: none;
+    border: 1px solid #d7d7d7;
+
+}
+
+.nut{
+    margin-top: 20px;
+}
+
+.nut button{
+    background-color: #10c2ff;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    padding: 15px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 1.6rem;
+    margin-right: 10px;
+}
+
+.thongtin{
+    font-size: 1.8rem;
+}
+
+.thongtinsp{
+    margin-top: 20px;
+    /* border-bottom: 1px solid #909090; */
+    cursor: pointer;
+}
+
+.text{
+    margin-top: 20px;
+    transform-origin: top;
+    /* animation: keorem ease 1s forwards; */
+}
+
+@keyframes keorem {
+    from{
+        transform: scaleY(0);
+    }
+    to{
+        transform: scaleY(1);
+    }
+}

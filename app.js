@@ -202,31 +202,65 @@ app.post("/dangKy", function(req, res) {
 });
 
 app.get("/cho/:sanPham", function(req, res) {
-    const requestedSanPham = req.params.sanPham;
-    Product.findOne({index: requestedSanPham}).then(function(foundProduct) {
-        res.render("sanPham", {
-            pricture: foundProduct.pricture,
-            title: foundProduct.title,
-            content: foundProduct.content,
-            price: foundProduct.price
+    if (req.isAuthenticated()) {
+        const requestedSanPham = req.params.sanPham;
+        Product.findOne({index: requestedSanPham}).then(function(foundProduct) {
+            res.render("sanPham", {
+                taiKhoan: "co", 
+                tenTK: tenTK,
+                pricture: foundProduct.pricture,
+                title: foundProduct.title,
+                content: foundProduct.content,
+                price: foundProduct.price
+            });
+        }).catch(function(err) {
+            console.log(err);
         });
-    }).catch(function(err) {
-        console.log(err);
-    });
+    } else {
+        const requestedSanPham = req.params.sanPham;
+        Product.findOne({index: requestedSanPham}).then(function(foundProduct) {
+            res.render("sanPham", {
+                taiKhoan: "khong",
+                pricture: foundProduct.pricture,
+                title: foundProduct.title,
+                content: foundProduct.content,
+                price: foundProduct.price
+            });
+        }).catch(function(err) {
+            console.log(err);
+        });
+    }
 });
 
 app.get("/meo/:sanPham", function(req, res) {
-    const requestedSanPham = req.params.sanPham;
-    Product.findOne({index: requestedSanPham}).then(function(foundProduct) {
-        res.render("sanPham", {
-            pricture: foundProduct.pricture,
-            title: foundProduct.title,
-            content: foundProduct.content,
-            price: foundProduct.price
+    if (req.isAuthenticated()) {
+        const requestedSanPham = req.params.sanPham;
+        Product.findOne({index: requestedSanPham}).then(function(foundProduct) {
+            res.render("sanPham", {
+                taiKhoan: "co", 
+                tenTK: tenTK,
+                pricture: foundProduct.pricture,
+                title: foundProduct.title,
+                content: foundProduct.content,
+                price: foundProduct.price
+            });
+        }).catch(function(err) {
+            console.log(err);
         });
-    }).catch(function(err) {
-        console.log(err);
-    });
+    } else {
+        const requestedSanPham = req.params.sanPham;
+        Product.findOne({index: requestedSanPham}).then(function(foundProduct) {
+            res.render("sanPham", {
+                taiKhoan: "khong",
+                pricture: foundProduct.pricture,
+                title: foundProduct.title,
+                content: foundProduct.content,
+                price: foundProduct.price
+            });
+        }).catch(function(err) {
+            console.log(err);
+        });
+    }
 });
 
 app.get("/dangXuat", function(req, res) {
