@@ -9,6 +9,20 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 const app = express();
 
+// tên đăng nhập và mật khẩu database
+const nameAdmin = process.env.NAME;
+const passDB = process.env.PASS_DB;
+
+mongoose.set('strictQuery', false);
+
+async function connect() {
+    try {
+        await mongoose.connect('mongodb+srv://'+nameAdmin+':'+passDB+'@cluster0.0vhqbnh.mongodb.net/shopPetDB');
+    } catch (error) {
+        console.log('Connect failure');
+    }
+}
+
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
@@ -22,7 +36,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect('mongodb://127.0.0.1:27017/shopPetDB');
+connect();
 
 const userSchema = new mongoose.Schema({
     username: String,

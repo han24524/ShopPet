@@ -13,6 +13,7 @@ body {
 .body__title{
     text-align: center;
     position: relative;
+    margin-top: -50px;
 }
 
 .body__title__img{
